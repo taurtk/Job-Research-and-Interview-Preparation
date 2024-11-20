@@ -3,10 +3,13 @@ import streamlit as st
 from crewai import Task, Crew, Agent
 from langchain_groq import ChatGroq
 from crewai_tools import ScrapeWebsiteTool, SerperDevTool
+from dotenv import loadenv
+
+loadenv()
 
 # Set up environment variables for API keys
 os.environ["SERPER_API_KEY"] = "7c748181570a86f0b2f5d26c92dd4c92ad35e7ae"
-os.environ["GROQ_API_KEY"] = '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'  # Replace with your actual Groq API key
+os.environ["GROQ_API_KEY"] = os.getenv('GROQ_API_KEY')  # Replace with your actual Groq API key
 
 # Initialize the tools
 search_tool = SerperDevTool()
